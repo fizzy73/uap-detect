@@ -1,0 +1,88 @@
+{
+  "version": "2025-08-11",
+  "sources": [
+    "Hynek CE system",
+    "Vall\u00e9e AN/CE schema",
+    "NASA UAP 2023 report",
+    "Galileo Project papers"
+  ],
+  "top_level": [
+    {
+      "id": "prosaic/debris",
+      "desc": "Loose particles, ice flakes, insulation, paint chips near camera; often slow, drifting, tumbling"
+    },
+    {
+      "id": "prosaic/thruster_plume",
+      "desc": "Gas venting or attitude control firings; sudden snow-like bursts"
+    },
+    {
+      "id": "prosaic/sun_glint",
+      "desc": "Specular reflections from satellites/space junk; brief flares"
+    },
+    {
+      "id": "prosaic/sat_train",
+      "desc": "Starlink or other satellite trains; steady linear motions"
+    },
+    {
+      "id": "prosaic/meteor_reentry",
+      "desc": "Fast streaks/arcs; sudden brightening and fragmentation"
+    },
+    {
+      "id": "prosaic/aurora_sprite",
+      "desc": "Diffuse structured glow; columns/sprites"
+    },
+    {
+      "id": "prosaic/optical_artifact",
+      "desc": "Lens flare, sensor bloom, compression ghosts, hot pixels"
+    },
+    {
+      "id": "uap/orb",
+      "desc": "Discrete luminous spheroid with non-ballistic motion"
+    },
+    {
+      "id": "uap/rod_cigar",
+      "desc": "Elongated object without obvious aerodynamic surfaces"
+    },
+    {
+      "id": "uap/triangular",
+      "desc": "Triangular or wedge geometry with stable vertices/lights"
+    },
+    {
+      "id": "uap/amorphous",
+      "desc": "Shape-changing, cloud-like or 'dementor' silhouette"
+    },
+    {
+      "id": "uap/maneuver",
+      "desc": "Right-angle turns, abrupt acceleration/stop; non-newtonian-looking"
+    }
+  ],
+  "hynek_mapping": {
+    "CE-1": "Within ~500ft visual (space-cam proxy: near-field within a few meters of lens)",
+    "CE-2": "Physical effects (N/A for remote cams unless platform telemetry anomalies)",
+    "CE-3+": "Entity/interaction (out of scope for this pipeline)"
+  },
+  "vallee_mapping": {
+    "AN1": "Lights/anomalies without lasting effects",
+    "AN2": "With lasting effects",
+    "FB": "Fly-by events",
+    "MA": "Maneuvers",
+    "SV": "Space-vehicle-like structured craft"
+  },
+  "decision_hints": {
+    "near_field_flags": [
+      "object crosses lens rapidly",
+      "sharp focus vs star field blurred",
+      "parallax opposite to Earth limb"
+    ],
+    "far_field_flags": [
+      "consistent motion with orbital track",
+      "no parallax vs Earth limb",
+      "star background occlusions"
+    ],
+    "artifact_flags": [
+      "persists at same pixel coords",
+      "appears only on high gain frames",
+      "aligned with light sources"
+    ]
+  }
+}

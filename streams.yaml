@@ -1,0 +1,46 @@
+# streams.yaml  (1280×720 mask coordinates; autoscaled in code)
+
+earth_4k_live:
+  url: "https://www.youtube.com/watch?v=fO9e9jnhYK8"
+  proxy_port: 26123
+  masks:
+    - [0,   610, 1280, 110]   # bottom banner
+    - [0,   520, 360,  210]   # BIGGER globe overlay
+    - [8,    8,  100,   48]   # red Live
+    - [1120,  8,  160,   72]  # sen logo area (generous)
+  excluded_classes: ["stop sign","traffic light","traffic sign","clock","tv","cell phone","laptop","keyboard","mouse","remote","book","toothbrush","scissors","train","bus","car","truck","boat","bench","person","tie","microwave","refrigerator","toaster","hair drier","umbrella"]
+  confidence: 0.60
+  min_box_area: 1200
+  frame_skip: 3
+  motion_gate: true
+  motion_pixels: 7000
+  save_boxed_frames: true
+  save_raw_frames: false
+  delete_older_minutes: 45
+  max_saved_frames: 200
+
+iss_live:
+  # Primary: NASA TV official live stream (stable)
+  url: "https://www.youtube.com/watch?v=21X5lGlDOfg"
+  # Fallback option if needed:
+  # url: "https://www.youtube.com/live/7viDDmWbs0s"
+  proxy_port: 26125
+  force_ytdlp: false        # <- bypass Streamlink; resolve direct media via yt-dlp
+  masks:
+    - [0,   610, 1280, 110]  # bottom banner
+    - [8,     8,  100,  48]  # Live
+    - [1120,  8,  160,  72]  # logo
+    - [0,     0,  220, 120]  # TL HUD
+    - [1060,  0,  220, 120]  # TR HUD
+    - [0,     0,   40, 720]  # left edge/arm
+    - [1240,  0,   40, 720]  # right edge/arm
+  excluded_classes: ["stop sign","traffic light","traffic sign","clock","tv","cell phone","laptop","keyboard","mouse","remote","book","toothbrush","scissors","train","bus","car","truck","boat","bench","person","tie","microwave","refrigerator","toaster","hair drier","umbrella"]
+  confidence: 0.70
+  min_box_area: 1500
+  frame_skip: 3
+  motion_gate: true
+  motion_pixels: 8000
+  save_boxed_frames: true
+  save_raw_frames: false
+  delete_older_minutes: 30
+  max_saved_frames: 150
